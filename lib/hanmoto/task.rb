@@ -10,9 +10,10 @@ module Hanmoto
       new(**args).run
     end
 
-    def initialize(view_dir:, layouts: {})
+    def initialize(view_dir:, layouts: {}, controller:)
       @view_dir = view_dir
       @layouts = layouts
+      @controller = controller.constantize
     end
 
     def run
@@ -20,7 +21,7 @@ module Hanmoto
         next if file.start_with?('.')
         name, format = file.split('.', 3)
         layout = @layouts[format.to_sym]
-        body = ApplicationController.renderer.render("#{@view_dir}/#{name}", layout: layout)
+        body = @controller.renderer.render("#{@view_dir}/#{name}", layout: layout)
         path = output_path(name, format)
         File.write(path, body)
         ::Logger.new(::STDOUT).info("Writing #{path}")

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Hanmoto::Task do
-  let(:task) { described_class.new(view_dir: view_dir, layouts: { html: 'public' }) }
+  let(:task) { described_class.new(view_dir: view_dir, layouts: { html: 'public' }, controller: 'ApplicationController') }
 
   after do
     FileUtils.rm_r(Dir.glob(Rails.public_path.join('*')), secure: true)

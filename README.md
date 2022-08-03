@@ -89,6 +89,7 @@ Hanmoto.configure do |config|
 #   config.layouts = {
 #     html: 'public',
 #   }
+#   config.controller = 'ApplicationController'
 end
 ```
 

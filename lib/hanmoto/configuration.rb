@@ -1,6 +1,6 @@
 module Hanmoto
   class Configuration
-    OPTIONS = %i[view_dir layouts]
+    OPTIONS = %i[view_dir layouts controller]
 
     attr_accessor *OPTIONS
 
@@ -9,6 +9,7 @@ module Hanmoto
       @layouts = {
         html: 'public',
       }
+      @controller = 'ApplicationController'
     end
 
     def to_h
